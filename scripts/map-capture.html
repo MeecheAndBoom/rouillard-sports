@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8" /><title>compositing</title>
+<style>html,body{margin:0;background:#1c1c1e;display:grid;place-items:center;height:100vh;font:13px system-ui;color:#fff}</style>
+</head>
+<body>
+<canvas id="c" width="1120" height="630"></canvas>
+<script>
+  // Lyon 69007 (Rue de l'Industrie area), zoom 15, 6x4 tiles, pin centred.
+  const Z = 15, LAT = 45.745, LON = 4.835, COLS = 6, ROWS = 4;
+  const n = 2 ** Z;
+  const xf = (LON + 180) / 360 * n;
+  const latRad = LAT * Math.PI / 180;
+  const yf = (1 - Math.log(Math.tan(latRad) + 1 / Math.cos(latRad)) / Math.PI) / 2 * n;
+  const x0 = Math.floor(xf) - 2, y0 = Math.floor(yf) - 2;
+
+  const W = 1120, H = 630;
+  const offX = W / 2 - (xf - x0) * 256; // translate grid so the pin is centred
+  const offY = H / 2 - (yf - y0) * 256;
+
+  const ctx = document.getElementById("c").getContext("2d");
+  ctx.fillStyle = "#e8e8ed";
+  ctx.fillRect(0, 0, W, H);
+
+  const load = (url) =>
+    new Promise((resolve) => {
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.onload = () => resolve(img);
+      img.onerror = () => resolve(null);
+      img.src = url;
+    });
+
+  (async () => {
+    for (let cx = 0; cx < COLS; cx++) {
+      for (let cy = 0; cy < ROWS; cy++) {
+        const img = await load("https://tile.openstreetmap.org/" + Z + "/" + (x0 + cx) + "/" + (y0 + cy) + ".png");
+        if (img) ctx.drawImage(img, offX + cx * 256, offY + cy * 256);
+      }
+    }
+
+    // Pin, centred.
+    const px = W / 2, py = H / 2;
+    ctx.save();
+    ctx.translate(px, py);
+    ctx.shadowColor = "rgba(0,0,0,.35)";
+    ctx.shadowBlur = 10;
+    ctx.shadowOffsetY = 6;
+    ctx.beginPath(); // teardrop pin
+    ctx.moveTo(0, 2);
+    ctx.bezierCurveTo(-13, -14, -12, -34, 0, -40);
+    ctx.bezierCurveTo(12, -34, 13, -14, 0, 2);
+    ctx.closePath();
+    ctx.fillStyle = "#0071e3";
+    ctx.fill();
+    ctx.lineWidth = 2.2;
+    ctx.strokeStyle = "#ffffff";
+    ctx.stroke();
+    ctx.shadowColor = "transparent";
+    ctx.beginPath();
+    ctx.arc(0, -23, 6.6, 0, Math.PI * 2);
+    ctx.fillStyle = "#ffffff";
+    ctx.fill();
+    ctx.restore();
+
+    // Attribution chip.
+    ctx.font = '12px -apple-system, "Segoe UI", Roboto, sans-serif';
+    const label = "© OpenStreetMap contributors";
+    const tw = ctx.measureText(label).width;
+    ctx.fillStyle = "rgba(255,255,255,.85)";
+    roundRect(ctx, W - tw - 20, H - 28, tw + 14, 20, 6);
+    ctx.fill();
+    ctx.fillStyle = "#3a3a3c";
+    ctx.fillText(label, W - tw - 13, H - 14);
+
+    function roundRect(c, x, y, w, h, r) {
+      c.beginPath();
+      c.moveTo(x + r, y);
+      c.arcTo(x + w, y, x + w, y + h, r);
+      c.arcTo(x + w, y + h, x, y + h, r);
+      c.arcTo(x, y + h, x, y, r);
+      c.arcTo(x, y, x + w, y, r);
+      c.closePath();
+    }
+
+    const dataUrl = document.getElementById("c").toDataURL("image/jpeg", 0.92);
+    const res = await fetch("/save", { method: "POST", body: JSON.stringify({ dataUrl }) });
+    document.title = res.ok ? "saved" : "save-failed";
+    document.body.textContent = document.title;
+  })();
+</script>
+</body>
+</html>

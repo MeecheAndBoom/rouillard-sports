@@ -1,0 +1,877 @@
+@import "tailwindcss";
+@import "../styles/transitions-root.css";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+/* ═══════════════════════════════════════════════════════════════
+   ROUILLARD SPORT — design system
+   -----------------------------------------------------------------
+   Motorsport parts house. Black pit surface, gold hardware,
+   white markings. Every surface is square: the visual language is
+   machined, not rounded. Section dividers are gold hairlines and
+   chequered flag bands — never grey pills.
+   ═══════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ── Surfaces (dark-locked; the whole site is one theme) ──── */
+  --color-pit: #08090a;        /* page ground */
+  --color-asphalt: #0e1012;    /* alternating section band */
+  --color-panel: #14171a;      /* card */
+  --color-panel-2: #1b1f23;    /* raised card / inset */
+  --color-line: #2a2e34;       /* hairline */
+  --color-line-soft: #1a1d21;  /* quietest divider */
+
+  /* ── Ink ──────────────────────────────────────────────────── */
+  --color-white: #ffffff;
+  --color-paper: #f2f3f4;      /* primary text on dark */
+  --color-muted: #9aa2ab;      /* secondary text */
+  --color-muted-dim: #7b838d;  /* tertiary text */
+
+  /* ── Legacy aliases (pre-migration class names) ────────────────
+         These keep not-yet-migrated markup legible on the dark
+         surface. New code must use the tokens above. */
+  --color-ink: #f2f3f4;
+  --color-ink-soft: #9aa2ab;
+  --color-muted-light: #7b838d;
+  --color-accent: #c9a227;
+  --color-accent-hover: #e8c766;
+  --color-alt: #0e1012;
+  --color-graphite: #14171a;
+  --color-sky: #1b1f23;
+  --color-callout: #1b1f23;
+
+  /* ── Gold ─────────────────────────────────────────────────── */
+  --color-gold: #c9a227;
+  --color-gold-light: #e8c766;
+  --color-gold-dark: #8c6e14;
+  --color-gold-ink: #0a0b0c;
+
+  /* ── Status ───────────────────────────────────────────────── */
+  --color-success: #46b95c;
+  --color-warning: #d29922;
+  --color-danger: #ff5f52;
+
+  /* ── Radii: the whole system is square. Documented exception:
+         the cart counter chip is a pill (numeric indicator). ─── */
+  --radius-pill: 0px;
+  --radius-card: 0px;
+  --radius-box: 0px;
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
+
+  /* ── Layout ───────────────────────────────────────────────── */
+  --container-content: 1240px;
+  --container-narrow: 860px;
+  --container-wide: 1440px;
+
+  /* ── Type scale ───────────────────────────────────────────── */
+  --text-display: 3.5rem;
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 700;
+
+  --text-headline: 2.5rem;
+  --text-headline--line-height: 0.96;
+  --text-headline--letter-spacing: -0.015em;
+  --text-headline--font-weight: 700;
+
+  --text-title: 1.75rem;
+  --text-title--line-height: 1.1;
+  --text-title--letter-spacing: -0.01em;
+  --text-title--font-weight: 700;
+
+  --text-subtitle: 1.3125rem;
+  --text-subtitle--line-height: 1.35;
+  --text-subtitle--letter-spacing: -0.005em;
+  --text-subtitle--font-weight: 600;
+
+  --text-body-lg: 1.125rem;
+  --text-body-lg--line-height: 1.55;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.5;
+  --text-caption--letter-spacing: 0.01em;
+
+  --text-micro: 0.6875rem;
+  --text-micro--line-height: 1.45;
+  --text-micro--letter-spacing: 0.04em;
+
+  /* ── Motion ───────────────────────────────────────────────── */
+  --animate-hover-lift: hover-lift var(--duration-normal) var(--ease-out);
+  --animate-hover-raise: hover-raise var(--duration-fast) var(--ease-out);
+  --animate-fade-up: fade-up var(--duration-slower) var(--ease-out) both;
+  --animate-fade-in: fade-in var(--duration-medium) var(--ease-out) both;
+  --animate-spin: spin var(--duration-spinner, 800ms) linear infinite;
+  --animate-flag-scroll: flag-scroll 22s linear infinite;
+  --animate-sweep: sweep 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIGHT THEME
+   -----------------------------------------------------------------
+   A full token remap, not a filter. Every component keeps its
+   utilities; only the values move. Gold darkens so it still holds
+   contrast on paper, and ink tokens swap roles: `white` becomes the
+   heading ink, `pit` becomes the page ground.
+
+   Photo sections that must stay legible on a dark image opt out with
+   `.on-dark`, which restores the dark palette for their subtree.
+   ═══════════════════════════════════════════════════════════════ */
+:root[data-theme="light"] {
+  /* Surfaces: warm paper, not clinical white */
+  --color-pit: #f5f3ee;
+  --color-asphalt: #ece9e1;
+  --color-panel: #ffffff;
+  --color-panel-2: #f8f6f1;
+  --color-line: #d5cfc0;
+  --color-line-soft: #e6e1d5;
+
+  /* Ink */
+  --color-white: #101214;      /* heading ink in light mode */
+  --color-paper: #22262b;      /* body ink */
+  --color-muted: #4f565e;
+  --color-muted-dim: #6a7078;
+
+  /* Legacy aliases */
+  --color-ink: #22262b;
+  --color-ink-soft: #4f565e;
+  --color-muted-light: #6a7078;
+  --color-accent: #8a6a0f;
+  --color-accent-hover: #6f5509;
+  --color-alt: #ece9e1;
+  --color-graphite: #ffffff;
+  --color-sky: #f8f6f1;
+  --color-callout: #f8f6f1;
+
+  /* Gold: dark enough for 4.5:1 on paper, still metallic on black text */
+  --color-gold: #8a6a0f;
+  --color-gold-light: #7d600c;
+  --color-gold-dark: #5f4508;
+  --color-gold-ink: #fffdf7;
+
+  /* Status */
+  --color-success: #1f7a3a;
+  --color-warning: #8a5a00;
+  --color-danger: #b3261e;
+}
+
+/* Sections that sit on a photograph keep the dark palette. */
+:root[data-theme="light"] .on-dark {
+  --color-pit: #08090a;
+  --color-asphalt: #0e1012;
+  --color-panel: #14171a;
+  --color-panel-2: #1b1f23;
+  --color-line: #2a2e34;
+  --color-line-soft: #1a1d21;
+  --color-white: #ffffff;
+  --color-paper: #f2f3f4;
+  --color-muted: #9aa2ab;
+  --color-muted-dim: #7b838d;
+  --color-gold: #c9a227;
+  --color-gold-light: #e8c766;
+  --color-gold-dark: #8c6e14;
+  --color-gold-ink: #0a0b0c;
+}
+
+:root[data-theme="light"] .nav-blur {
+  background: rgba(245, 243, 238, 0.86);
+}
+
+:root[data-theme="light"] .grid-lines {
+  background-image:
+    linear-gradient(to right, rgba(16, 18, 20, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(16, 18, 20, 0.06) 1px, transparent 1px);
+}
+
+:root[data-theme="light"] .speed-stripes {
+  background-image: repeating-linear-gradient(
+    115deg,
+    rgba(138, 106, 15, 0.09) 0px,
+    rgba(138, 106, 15, 0.09) 2px,
+    transparent 2px,
+    transparent 22px
+  );
+}
+
+:root[data-theme="light"] .gold-text {
+  background: linear-gradient(180deg, #a8841a 0%, #8a6a0f 70%, #5f4508 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+:root[data-theme="light"] ::selection {
+  background: rgba(138, 106, 15, 0.22);
+  color: #101214;
+}
+
+:root[data-theme="light"] .prose-rs code {
+  color: var(--color-gold-dark);
+}
+
+
+@keyframes hover-lift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+@keyframes hover-raise {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -3px, 0);
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Chequered flag band — four-quadrant checker, the site's signature. */
+@keyframes flag-scroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 56px 0;
+  }
+}
+
+/* Light sweep across the hero image — reads as a car passing. */
+@keyframes sweep {
+  0% {
+    transform: translate3d(-120%, 0, 0) skewX(-18deg);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.55;
+  }
+  55% {
+    opacity: 0;
+    transform: translate3d(140%, 0, 0) skewX(-18deg);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ── Base ─────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    background: var(--color-pit);
+  }
+
+  body {
+    background: var(--color-pit);
+    color: var(--color-paper);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    line-height: 1;
+    color: var(--color-white);
+    text-transform: uppercase;
+  }
+
+  ::selection {
+    background: rgba(201, 162, 39, 0.3);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-light);
+    outline-offset: 3px;
+    border-radius: 0;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-family: inherit;
+  }
+
+  /* Scrollbar, dark pit theme */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-pit);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line);
+    border: 2px solid var(--color-pit);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-dark);
+  }
+}
+
+@layer components {
+  /* ── Buttons: square, machined, gold-on-black ─────────────── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-semibold
+      transition-all select-none whitespace-nowrap cursor-pointer
+      disabled:pointer-events-none disabled:opacity-40;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-radius: 0;
+    transition-duration: var(--duration-normal);
+    transition-timing-function: var(--ease-out);
+  }
+
+  .btn:active:not(:disabled) {
+    transition-duration: var(--duration-instant);
+    transform: scale(0.98);
+  }
+
+  .btn-primary {
+    @apply bg-gold text-gold-ink;
+    padding: 0.78rem 1.5rem;
+    font-size: 0.9375rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--color-gold-light);
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-gold border border-gold;
+    padding: 0.78rem 1.5rem;
+    font-size: 0.9375rem;
+  }
+  .btn-outline:hover:not(:disabled) {
+    background: rgba(201, 162, 39, 0.12);
+    border-color: var(--color-gold-light);
+    color: var(--color-gold-light);
+  }
+
+  .btn-dark {
+    @apply bg-panel-2 text-paper border border-line;
+    padding: 0.78rem 1.5rem;
+    font-size: 0.9375rem;
+  }
+  .btn-dark:hover:not(:disabled) {
+    border-color: var(--color-gold);
+    color: var(--color-gold-light);
+  }
+
+  .btn-ghost {
+    @apply text-gold;
+    padding: 0.5rem 0;
+    font-size: 0.8125rem;
+  }
+  .btn-ghost:hover:not(:disabled) {
+    color: var(--color-gold-light);
+  }
+
+  .btn-danger {
+    @apply bg-transparent text-danger border border-danger/50;
+    padding: 0.78rem 1.5rem;
+    font-size: 0.9375rem;
+  }
+  .btn-danger:hover:not(:disabled) {
+    background: rgba(255, 95, 82, 0.12);
+    border-color: var(--color-danger);
+  }
+
+  .btn-success {
+    @apply bg-transparent text-success border border-success/50;
+    padding: 0.78rem 1.5rem;
+    font-size: 0.9375rem;
+  }
+  .btn-success:hover:not(:disabled) {
+    background: rgba(46, 196, 128, 0.12);
+    border-color: var(--color-success);
+  }
+
+  .btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+
+  .btn-lg {
+    padding: 1rem 1.9rem;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    .btn-primary,
+    .btn-outline,
+    .btn-dark,
+    .btn-danger,
+    .btn-success {
+      padding: 0.65rem 1.15rem;
+      font-size: 0.875rem;
+    }
+    .btn-sm {
+      padding: 0.45rem 0.8rem;
+    }
+    .btn-lg {
+      padding: 0.8rem 1.4rem;
+      font-size: 0.9375rem;
+    }
+  }
+
+  /* ── Route entrance ───────────────────────────────────────── */
+  @keyframes page-enter {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .page-enter {
+    animation: page-enter 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .page-enter {
+      animation: none;
+    }
+  }
+
+  /* ── Section rhythm ───────────────────────────────────────── */
+  .section {
+    @apply mx-auto w-full;
+    max-width: var(--container-content);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .section-wide {
+    @apply mx-auto w-full;
+    max-width: var(--container-wide);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .section-narrow {
+    @apply mx-auto w-full;
+    max-width: var(--container-narrow);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .section-pad {
+    padding-top: clamp(3.5rem, 7vw, 6.5rem);
+    padding-bottom: clamp(3.5rem, 7vw, 6.5rem);
+  }
+
+  /* ── Panels: square, hairline gold when active ────────────── */
+  .panel {
+    @apply bg-panel border border-line;
+    transition:
+      border-color var(--duration-normal) var(--ease-out),
+      transform var(--duration-normal) var(--ease-out),
+      background-color var(--duration-normal) var(--ease-out);
+  }
+  .panel:hover {
+    border-color: rgba(201, 162, 39, 0.55);
+    transform: translate3d(0, -4px, 0);
+  }
+
+  .panel-flat {
+    @apply bg-panel border border-line;
+  }
+
+  /* ── Legacy card surfaces (pre-migration class names) ──────── */
+  .card {
+    @apply bg-panel border border-line;
+  }
+  .card-flat {
+    @apply bg-panel border border-line;
+  }
+  .prose-arm {
+    color: var(--color-paper);
+  }
+
+  /* ── Forms: square inputs, gold focus ─────────────────────── */
+  .field {
+    @apply w-full bg-pit border border-line text-paper
+      placeholder:text-muted-dim transition-all;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border-radius: 0;
+    transition-duration: var(--duration-fast);
+    transition-timing-function: var(--ease-out);
+  }
+  .field:hover {
+    border-color: #3a4048;
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.18);
+  }
+  .field:disabled {
+    @apply bg-panel text-muted-dim cursor-not-allowed;
+  }
+
+  .field-label {
+    @apply block text-[0.75rem] font-semibold text-paper mb-2;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Badges / chips ───────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1.5 text-micro font-semibold uppercase;
+    padding: 0.28rem 0.6rem;
+    border: 1px solid currentColor;
+    letter-spacing: 0.1em;
+    border-radius: 0;
+  }
+
+  .badge-gold {
+    @apply bg-gold text-gold-ink border-gold;
+  }
+  .badge-success {
+    @apply bg-success/10 text-success border-success/45;
+  }
+  .badge-warning {
+    @apply bg-warning/10 text-warning border-warning/45;
+  }
+  .badge-danger {
+    @apply bg-danger/10 text-danger border-danger/45;
+  }
+  .badge-quiet {
+    @apply bg-panel-2 text-muted border-line;
+  }
+
+  /* ── Chequered flag band ──────────────────────────────────── */
+  .flag-band {
+    background-image:
+      conic-gradient(#ffffff 25%, #0a0b0c 0 50%, #ffffff 0 75%, #0a0b0c 0);
+    background-size: 28px 28px;
+  }
+  .flag-band-sm {
+    background-image:
+      conic-gradient(#ffffff 25%, #0a0b0c 0 50%, #ffffff 0 75%, #0a0b0c 0);
+    background-size: 14px 14px;
+  }
+  .flag-band-gold {
+    background-image:
+      conic-gradient(#e8c766 25%, #0a0b0c 0 50%, #e8c766 0 75%, #0a0b0c 0);
+    background-size: 28px 28px;
+  }
+
+  /* ── Diagonal speed stripes (section texture) ─────────────── */
+  .speed-stripes {
+    background-image: repeating-linear-gradient(
+      115deg,
+      rgba(201, 162, 39, 0.055) 0px,
+      rgba(201, 162, 39, 0.055) 2px,
+      transparent 2px,
+      transparent 22px
+    );
+  }
+
+  /* ── Pit-wall grid (technical backdrop) ───────────────────── */
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  /* ── Livery stripe (edge accent) ──────────────────────────── */
+  .livery {
+    background-image: linear-gradient(
+      90deg,
+      var(--color-gold) 0 34%,
+      var(--color-white) 34% 46%,
+      var(--color-pit) 46% 100%
+    );
+  }
+
+  /* ── Corner brackets (reticle marks) ──────────────────────── */
+  .brackets::before,
+  .brackets::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-color: var(--color-gold);
+    border-style: solid;
+    pointer-events: none;
+  }
+  .brackets::before {
+    top: -1px;
+    left: -1px;
+    border-width: 1px 0 0 1px;
+  }
+  .brackets::after {
+    right: -1px;
+    bottom: -1px;
+    border-width: 0 1px 1px 0;
+  }
+
+  /* ── Top bar: translucent dark chrome, gold underline ─────── */
+  .nav-blur {
+    background: rgba(8, 9, 10, 0.82);
+    -webkit-backdrop-filter: saturate(150%) blur(18px);
+    backdrop-filter: saturate(150%) blur(18px);
+  }
+
+  /* ── Reveal on scroll ─────────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition:
+      opacity var(--duration-slower) var(--ease-out),
+      transform var(--duration-slower) var(--ease-out);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* ── Horizontal scroll-snap rails ─────────────────────────── */
+  .rail {
+    @apply flex gap-4 overflow-x-auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 0.5rem;
+  }
+  .rail::-webkit-scrollbar {
+    display: none;
+  }
+  .rail > * {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  /* ── Marquee (brand band) ─────────────────────────────────── */
+  .marquee {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  }
+  .marquee-group {
+    width: max-content;
+    animation: marquee-scroll var(--marquee-duration, 48s) linear infinite;
+    will-change: transform;
+  }
+  .marquee:hover .marquee-group,
+  .marquee:focus-within .marquee-group {
+    animation-play-state: paused;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .content-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+  }
+  /* Display type — condensed, uppercase, tight */
+  .font-display {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+  }
+  /* Numeric / telemetry type */
+  .font-mono-num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+  .gold-text {
+    background: linear-gradient(180deg, #f2dda0 0%, var(--color-gold) 70%, var(--color-gold-dark) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* Thin gold rule used under key blocks */
+  .rule-gold {
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-gold) 0%, rgba(201, 162, 39, 0) 100%);
+  }
+  /* Livery edge bar on the left of a block */
+  .edge-gold {
+    border-left: 3px solid var(--color-gold);
+  }
+}
+
+/* ── Route progress bar ───────────────────────────────────────── */
+@keyframes routebar {
+  0% {
+    transform: scaleX(0);
+  }
+  60% {
+    transform: scaleX(0.7);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* ── Marquee scroll ───────────────────────────────────────────── */
+@keyframes marquee-scroll {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-group {
+    animation: none;
+  }
+  .marquee {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .marquee::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ── Hero drift ───────────────────────────────────────────────── */
+@keyframes hero-drift {
+  0% {
+    opacity: 0;
+    transform: scale(1.03) translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.12) translate3d(-1.5%, -1%, 0);
+  }
+}
+.hero-drift {
+  animation: hero-drift 26s ease-out infinite alternate;
+  will-change: transform, opacity;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-drift {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Skip link ────────────────────────────────────────────────── */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  padding: 10px 18px;
+  background: var(--color-gold);
+  color: var(--color-gold-ink);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 160ms ease-out;
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid var(--color-gold-light);
+  outline-offset: 3px;
+}
+
+/* ── Blog prose ───────────────────────────────────────────────── */
+.prose-rs {
+  color: var(--color-paper);
+}
+.prose-rs > h2:first-child {
+  margin-top: 0;
+}
+.prose-rs code {
+  background: var(--color-panel-2);
+  padding: 0.15rem 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--color-gold-light);
+}
+
+/* ── Reduced motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .flag-band,
+  .flag-band-sm,
+  .flag-band-gold {
+    animation: none !important;
+  }
+}
