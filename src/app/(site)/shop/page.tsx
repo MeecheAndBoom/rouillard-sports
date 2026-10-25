@@ -6,6 +6,7 @@ import { getFacets } from "@/lib/categories";
 import { categoryLabel } from "@/lib/constants";
 import { pageMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/site/PageHeader";
+import { HeroBackground } from "@/components/site/HeroBackground";
 import { ShopFilters } from "@/components/site/ShopFilters";
 import { ShopResults } from "@/components/ui/ShopResults";
 import type { Product } from "@/lib/types";

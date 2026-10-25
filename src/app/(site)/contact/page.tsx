@@ -4,6 +4,7 @@ import { getDict, getLocale } from "@/lib/i18n/server";
 import { pageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/constants";
 import { PageHeader } from "@/components/site/PageHeader";
+import { HeroBackground } from "@/components/site/HeroBackground";
 import { ContactForm } from "@/components/site/PublicForms";
 import { Reveal } from "@/components/ui/Reveal";
 

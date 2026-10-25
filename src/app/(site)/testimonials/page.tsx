@@ -4,6 +4,7 @@ import { getReviews, averageRating } from "@/lib/reviews";
 import { pageMetadata } from "@/lib/seo";
 import { shortDate } from "@/lib/format";
 import { PageHeader } from "@/components/site/PageHeader";
+import { HeroBackground } from "@/components/site/HeroBackground";
 import { ReviewForm } from "@/components/site/PublicForms";
 import { Stars } from "@/components/ui/FormBits";
 import { Reveal } from "@/components/ui/Reveal";

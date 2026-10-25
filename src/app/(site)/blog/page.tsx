@@ -5,6 +5,7 @@ import { getPosts } from "@/lib/blog";
 import { pageMetadata } from "@/lib/seo";
 import { shortDate } from "@/lib/format";
 import { PageHeader } from "@/components/site/PageHeader";
+import { HeroBackground } from "@/components/site/HeroBackground";
 import { Reveal } from "@/components/ui/Reveal";
 
 export async function generateMetadata(): Promise<Metadata> {

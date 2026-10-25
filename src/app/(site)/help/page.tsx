@@ -4,6 +4,7 @@ import { getDict, getLocale } from "@/lib/i18n/server";
 import { pageMetadata, faqJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHeader } from "@/components/site/PageHeader";
+import { HeroBackground } from "@/components/site/HeroBackground";
 import { FaqExplorer, type FaqGroup } from "@/components/site/FaqExplorer";
 import { Reveal } from "@/components/ui/Reveal";
 
