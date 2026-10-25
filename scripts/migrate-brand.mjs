@@ -186,13 +186,13 @@ function cleanBrandProse(value) {
 
 const SITE_BLOCK = {
   name: "Rouillard Sport",
-  tagline: "Spécialiste BMW, toutes les marques servies.",
-  taglineEn: "BMW specialists, all marques served.",
-  location: "Décines-Charpieu, France",
-  address: "14 Rue de la Vitrine, 69150 Décines-Charpieu, France",
-  phone: "+33 4 72 84 09 63",
-  phoneHref: "+33472840963",
-  email: "contact@rouillard-sport.com",
+  tagline: "BMW & Rallye - Spécialiste toutes marques.",
+  taglineEn: "BMW & Rallye - Specialist for all marques.",
+  location: "L'Union, France",
+  address: "15 ROUTE DE BESSIERES, 31240 L'UNION, France",
+  phone: "+33 7 56 91 22 18",
+  phoneHref: "+33756912218",
+  email: "rouillardmarcantoine@gmail.com",
   announcement: "",
   hours: [
     { days: "Lundi - Vendredi", daysEn: "Monday - Friday", time: "8:00 - 18:30" },

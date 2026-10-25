@@ -8,30 +8,32 @@
 export const fr = {
   meta: {
     siteName: "Rouillard Sport",
-    tagline: "Spécialiste BMW, toutes les marques servies.",
+    tagline: "BMW & Rallye - Spécialiste toutes marques.",
     description:
-      "Spécialiste BMW avant tout : pièces d'origine, performance et compétition pour BMW et Mini, plus un catalogue complet pour toutes les autres marques. Compatibilité vérifiée, stock réel, expédition sous 48 h depuis Décines-Charpieu.",
+      "Spécialiste BMW et rallye : pièces d'origine, performance et compétition pour BMW et véhicules de rallye, plus un catalogue complet pour toutes les autres marques. Compatibilité vérifiée, stock réel, expédition sous 48 h depuis L'Union (31).",
     shortDescription:
-      "Spécialiste BMW : pièces d'origine et performance, toutes marques servies.",
+      "Spécialiste BMW et rallye : pièces d'origine et performance, toutes marques servies.",
     shopDescription:
-      "Catalogue de spécialiste BMW : freinage, suspension, moteur, transmission, échappement et électronique pour BMW et Mini, avec un fonds complet pour toutes les autres marques. Recherche par marque, modèle et référence, compatibilité contrôlée, garantie 24 mois.",
+      "Catalogue Rouillard Sport : spécialiste BMW et rallye. Freinage, suspension, moteur, transmission, échappement et électronique pour BMW, véhicules de rallye et toutes les autres marques. Recherche par marque, modèle et référence, compatibilité contrôlée, garantie 24 mois.",
     blogDescription:
-      "Guides BMW, diagnostics et préparation : choisir la bonne référence, vérifier la compatibilité, monter et entretenir sa pièce. Les conseils d'un atelier spécialiste BMW, toutes marques.",
+      "Guides BMW et rallye, diagnostics et préparation : choisir la bonne référence, vérifier la compatibilité, monter et entretenir sa pièce. Les conseils de l'atelier Rouillard Sport.",
     keywords: [
       "pièces BMW",
       "pièces BMW M",
       "pièces Mini",
-      "spécialiste BMW Lyon",
+      "pièces rallye",
+      "spécialiste BMW Toulouse",
+      "spécialiste rallye",
       "pièces détachées BMW",
       "pièces sport auto",
       "pièces de compétition",
       "pièces auto performance",
       "freins sport",
-      "suspension sport",
+      "suspension rallye",
       "échappement titanium",
       "pièces toutes marques",
       "acheter pièce auto sport",
-      "préparation auto Lyon",
+      "préparation auto",
     ],
   },
 
@@ -89,7 +91,7 @@ export const fr = {
     affiliate: "Programme affiliés",
     resources: "Ressources",
     rights: "Tous droits réservés.",
-    tagline: "Spécialiste BMW et toutes marques : pièces contrôlées à l'atelier avant chaque départ.",
+    tagline: "BMW & Rallye - Spécialiste toutes marques : pièces contrôlées à l'atelier avant chaque départ.",
     hours: "Horaires d'ouverture",
     address: "Adresse",
     phone: "Téléphone",
@@ -144,9 +146,9 @@ export const fr = {
   },
 
   home: {
-    heroTitle: "BMW d'abord. Toutes les marques ensuite.",
+    heroTitle: "BMW & Rallye. Toutes les marques.",
     heroLead:
-      "Atelier spécialiste BMW : pièces d'origine, performance et compétition pour BMW et Mini, et un catalogue complet pour toutes les autres marques. Chaque référence est contrôlée avant expédition.",
+      "Atelier Rouillard Sport, spécialiste BMW et rallye : pièces d'origine, performance et compétition pour BMW, véhicules de rallye et toutes les autres marques. Chaque référence est contrôlée avant expédition.",
     heroCta: "Parcourir le catalogue",
     heroSecondary: "Rechercher une référence",
     spotlightTitle: "",
@@ -181,7 +183,7 @@ export const fr = {
       { value: "4 200+", label: "références contrôlées" },
       { value: "48 h", label: "expédition sur stock" },
       { value: "24 mois", label: "garantie pièces" },
-      { value: "BMW", label: "spécialité de l'atelier" },
+      { value: "BMW & Rallye", label: "spécialités de l'atelier" },
     ],
     brandsTitle: "Les marques que nous représentons.",
     brandsLead:
@@ -453,14 +455,14 @@ export const fr = {
   },
 
   about: {
-    title: "L'atelier BMW, sans détour.",
+    title: "L'atelier BMW & Rallye, sans détour.",
     intro:
-      "Rouillard Sport est d'abord un atelier BMW : pièces d'origine, références M et Mini, préparation. Nous servons aussi toutes les autres marques, avec la même exigence de contrôle.",
+      "Rouillard Sport est un atelier spécialisé BMW et rallye : pièces d'origine, références M, Mini et préparation rallye. Nous servons aussi toutes les autres marques, avec la même exigence de contrôle.",
     storyTitle: "Notre histoire",
     story1:
-      "Rouillard a commencé sur un banc, à démonter, mesurer et référencer des pièces BMW que personne ne savait identifier. Le stock est devenu une bibliothèque : chaque référence photographiée, mesurée et rattachée à sa compatibilité.",
+      "Rouillard a commencé sur un banc, à démonter, mesurer et référencer des pièces BMW et des pièces de rallye que personne ne savait identifier. Le stock est devenu une bibliothèque : chaque référence photographiée, mesurée et rattachée à sa compatibilité.",
     story2:
-      "Aujourd'hui l'atelier sert des propriétaires de BMW, des pilotes du dimanche et des écuries qui exigent de la répétabilité, sans jamais refuser une autre marque. La règle n'a pas changé : une pièce non contrôlée ne part pas.",
+      "Aujourd'hui l'atelier sert des propriétaires de BMW, des équipages de rallye, des pilotes du dimanche et des écuries qui exigent de la répétabilité, sans jamais refuser une autre marque. La règle n'a pas changé : une pièce non contrôlée ne part pas.",
     valuesTitle: "Nos engagements",
     values: [
       {

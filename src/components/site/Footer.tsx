@@ -119,6 +119,17 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-center gap-3">
+                <i className="fa-brands fa-facebook w-3.5 text-gold" aria-hidden="true" />
+                <a
+                  href="https://www.facebook.com/share/1FDELCtat4/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-colors hover:text-gold-light"
+                >
+                  Facebook
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
                 <i className="fa-solid fa-envelope w-3.5 text-gold" aria-hidden="true" />
                 <a
                   href={`mailto:${SITE.email}`}

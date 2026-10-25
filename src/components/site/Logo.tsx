@@ -55,7 +55,7 @@ export function Logo({
             <span className="text-gold"> Sport</span>
           </span>
           <span className="mt-1 font-mono-num text-[7.5px] leading-none tracking-[0.34em] text-muted">
-            BMW SPECIALISTS
+            BMW & RALLYE
           </span>
         </span>
       ) : null}
