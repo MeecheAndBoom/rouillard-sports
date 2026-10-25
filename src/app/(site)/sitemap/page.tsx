@@ -94,7 +94,7 @@ export default async function SitemapPage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.sitemapPage.title} lead={t.sitemapPage.lead} / imageSrc="/images/editorial/hero-4.jpg">
+      <PageHeader title={t.sitemapPage.title} lead={t.sitemapPage.lead} imageSrc="/images/editorial/hero-4.jpg" />
 
       <section className="border-b border-line bg-pit">
         <div className="section section-pad">

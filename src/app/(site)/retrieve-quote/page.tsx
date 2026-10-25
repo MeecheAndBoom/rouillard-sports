@@ -26,7 +26,7 @@ export default async function RetrieveQuotePage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.retrieveQuote.title} lead={t.retrieveQuote.lead} / imageSrc="/images/editorial/hero-2.jpg">
+      <PageHeader title={t.retrieveQuote.title} lead={t.retrieveQuote.lead} imageSrc="/images/editorial/hero-2.jpg" />
 
       <section className="border-b border-line bg-pit">
         <div className="section grid gap-10 py-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-16 lg:py-16">
