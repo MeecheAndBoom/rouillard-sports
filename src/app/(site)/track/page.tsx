@@ -29,7 +29,7 @@ export default async function TrackPage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.track.title} lead={t.track.lead} imageSrc="/images/editorial/paddock-1.jpg">
+      <PageHeader title={t.track.title} lead={t.track.lead} imageSrc="/images/editorial/paddock-1.jpg" />
 
       <Breadcrumbs
         items={[
