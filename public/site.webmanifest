@@ -1,7 +1,6 @@
 {
-  "name": "Rouillard Sport",
-  "short_name": "Rouillard Sport",
-  "description": "Pièces de compétition et de performance contrôlées en atelier.",
+  "name": "Rouillard Sports",
+  "short_name": "Rouillard Sports",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
@@ -16,7 +15,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#08090a",
-  "background_color": "#08090a",
+  "theme_color": "#b79f5b",
+  "background_color": "#565656",
   "display": "standalone"
 }

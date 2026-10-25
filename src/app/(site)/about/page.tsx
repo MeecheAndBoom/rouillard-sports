@@ -5,6 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 import { SITE, CATEGORY_LABELS, PART_CATEGORIES } from "@/lib/constants";
 import { PageHeader, Breadcrumbs } from "@/components/site/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
+import { HeroBackground } from "@/components/site/HeroBackground";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();

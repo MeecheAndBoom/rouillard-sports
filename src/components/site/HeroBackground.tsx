@@ -4,11 +4,12 @@
 const HERO_IMAGE = "/images/editorial/hero-1.jpg";
 
 export function HeroBackground({ src = HERO_IMAGE }: { src?: string }) {
+  const resolved = src && src.trim() ? src : HERO_IMAGE;
   return (
     <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={src}
+        src={resolved}
         alt=""
         className="hero-drift absolute inset-0 h-full w-full object-cover"
         loading="eager"
