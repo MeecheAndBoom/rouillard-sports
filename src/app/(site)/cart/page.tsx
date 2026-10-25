@@ -45,7 +45,7 @@ export default async function CartPage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.cart.title} lead={t.cart.emptyHint} />
+      <PageHeader title={t.cart.title} lead={t.cart.emptyHint} / imageSrc="/images/editorial/hero-5.jpg">
 
       <Breadcrumbs
         items={[

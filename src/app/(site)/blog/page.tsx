@@ -38,7 +38,7 @@ export default async function BlogPage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.blog.title} lead={t.blog.lead} />
+      <PageHeader title={t.blog.title} lead={t.blog.lead} / imageSrc="/images/editorial/hero-5.jpg">
 
       {posts.length === 0 ? (
         <section className="section section-pad">

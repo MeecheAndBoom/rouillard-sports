@@ -25,7 +25,7 @@ export default async function FirstTimeBuyersPage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.firstTime.title} lead={t.firstTime.lead} />
+      <PageHeader title={t.firstTime.title} lead={t.firstTime.lead} / imageSrc="/images/editorial/paddock-3.jpg">
 
       <section className="border-b border-line bg-pit">
         <div className="section section-pad">

@@ -34,7 +34,7 @@ export default async function GuidesHubPage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.resources.guidesHubTitle} lead={t.resources.guidesHubLead} />
+      <PageHeader title={t.resources.guidesHubTitle} lead={t.resources.guidesHubLead} / imageSrc="/images/editorial/paddock-4.jpg">
 
       <section className="border-b border-line bg-pit">
         <div className="section section-pad">

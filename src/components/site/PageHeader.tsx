@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HeroBackground } from "@/components/site/HeroBackground";
 
 /**
  * Page masthead: a pit-lane banner. Gold livery bar on the left of the
@@ -9,35 +10,48 @@ export function PageHeader({
   title,
   lead,
   children,
+  image,
+  imageSrc,
 }: {
   title: string;
   lead?: string;
   children?: React.ReactNode;
+  image?: string;
+  imageSrc?: string;
 }) {
-  return (
-    <header className="relative overflow-hidden border-b border-line bg-asphalt">
-      <div aria-hidden="true" className="grid-lines absolute inset-0 opacity-70" />
-      <div
-        aria-hidden="true"
-        className="absolute inset-y-0 left-0 w-[120px] bg-gradient-to-r from-pit to-transparent"
-      />
-      <div
-        aria-hidden="true"
-        className="livery absolute top-0 bottom-0 left-0 w-[3px]"
-      />
+  const bgSrc = imageSrc || image;
 
-      <div className="section page-enter relative pt-8 pb-11 sm:pt-14 sm:pb-16">
-        <h1 className="max-w-[920px] font-display text-[38px] leading-[0.94] text-white sm:text-[58px]">
+  return (
+    <header className="on-dark relative overflow-hidden border-b border-line bg-pit">
+      {bgSrc ? <HeroBackground src={bgSrc} /> : null}
+      {!bgSrc ? (
+        <>
+          <div aria-hidden="true" className="grid-lines absolute inset-0 opacity-70" />
+          <div
+            aria-hidden="true"
+            className="absolute inset-y-0 left-0 w-[120px] bg-gradient-to-r from-pit to-transparent"
+          />
+          <div
+            aria-hidden="true"
+            className="livery absolute top-0 bottom-0 left-0 w-[3px]"
+          />
+        </>
+      ) : null}
+
+      <div className="section page-enter relative pt-24 pb-14 sm:pt-32 sm:pb-20">
+        <h1 className="max-w-[920px] font-display text-[44px] leading-[0.92] text-white sm:text-[74px] lg:text-[86px]">
           {title}
         </h1>
         {lead ? (
-          <p className="mt-5 max-w-[660px] text-[16.5px] leading-[1.7] text-muted sm:text-[17.5px]">
+          <p className="mt-6 max-w-[660px] text-[16.5px] leading-[1.7] text-muted sm:text-[18px]">
             {lead}
           </p>
         ) : null}
-        {children ? <div className="mt-8 flex flex-wrap gap-3">{children}</div> : null}
+        {children ? <div className="mt-9 flex flex-wrap gap-3">{children}</div> : null}
       </div>
-      <div aria-hidden="true" className="flag-band-sm h-[6px] w-full opacity-60" />
+      {!bgSrc ? (
+        <div aria-hidden="true" className="flag-band-sm h-[6px] w-full opacity-60" />
+      ) : null}
     </header>
   );
 }

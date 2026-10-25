@@ -39,7 +39,7 @@ export default async function HelpPage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.help.title} lead={t.help.lead} />
+      <PageHeader title={t.help.title} lead={t.help.lead} / imageSrc="/images/editorial/workshop-1.jpg">
 
       <section className="border-b border-line bg-pit">
         <div className="section grid gap-10 py-12 lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-14 lg:py-16">

@@ -121,6 +121,7 @@ export default async function ShopPage({
       <PageHeader
         title={activeCategory ? categoryLabel(activeCategory, locale) : t.shop.title}
         lead={t.shop.lead}
+        imageSrc="/images/editorial/hero-6.jpg"
       />
 
       <div className="section py-10 sm:py-12">

@@ -28,7 +28,7 @@ export default async function ToolsHubPage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.resources.toolsHubTitle} lead={t.resources.toolsHubLead} />
+      <PageHeader title={t.resources.toolsHubTitle} lead={t.resources.toolsHubLead} imageSrc="/images/editorial/workshop-4.jpg">
 
       <section className="border-b border-line bg-pit">
         <div className="section section-pad">

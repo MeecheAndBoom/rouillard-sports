@@ -35,7 +35,7 @@ export default async function AboutPage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.about.title} lead={t.about.intro}>
+      <PageHeader title={t.about.title} lead={t.about.intro} imageSrc="/images/editorial/hero-2.jpg">
         <Link href="/contact" className="btn btn-primary btn-sm">
           <i className="fa-solid fa-paper-plane text-[11px]" aria-hidden="true" />
           <span>{t.common.contactUs}</span>

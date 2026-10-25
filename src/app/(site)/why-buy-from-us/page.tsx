@@ -34,7 +34,7 @@ export default async function WhyBuyPage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.whyBuy.title} lead={t.whyBuy.lead} />
+      <PageHeader title={t.whyBuy.title} lead={t.whyBuy.lead} imageSrc="/images/editorial/hero-4.jpg" />
 
       <section className="border-b border-line bg-pit">
         <div className="section section-pad">

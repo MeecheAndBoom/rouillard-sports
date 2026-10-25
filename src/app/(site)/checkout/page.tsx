@@ -28,7 +28,7 @@ export default async function CheckoutPage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.checkout.title} lead={t.checkout.lead} />
+      <PageHeader title={t.checkout.title} lead={t.checkout.lead} / imageSrc="/images/editorial/hero-6.jpg">
 
       <Breadcrumbs
         items={[

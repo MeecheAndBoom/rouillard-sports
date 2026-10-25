@@ -38,7 +38,7 @@ export default async function TestimonialsPage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.testimonials.title} lead={t.testimonials.lead}>
+      <PageHeader title={t.testimonials.title} lead={t.testimonials.lead} imageSrc="/images/editorial/paddock-2.jpg">
         {reviews.length ? (
           <span className="flex items-center gap-4 border border-line bg-panel px-5 py-3">
             <Stars rating={average} />

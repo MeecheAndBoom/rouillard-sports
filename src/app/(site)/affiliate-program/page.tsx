@@ -26,7 +26,7 @@ export default async function AffiliatePage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.affiliate.title} lead={t.affiliate.lead}>
+      <PageHeader title={t.affiliate.title} lead={t.affiliate.lead} imageSrc="/images/editorial/workshop-3.jpg">
         <div className="flex items-end gap-4 border border-line bg-panel px-6 py-4">
           <span className="font-mono-num text-[38px] leading-none font-bold text-gold">
             {t.affiliate.commissionValue}

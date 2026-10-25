@@ -38,7 +38,7 @@ export default async function ContactPage({
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.contact.title} lead={t.contact.lead}>
+      <PageHeader title={t.contact.title} lead={t.contact.lead} imageSrc="/images/editorial/hero-3.jpg">
         <span className="badge badge-quiet">
           <i className="fa-regular fa-clock text-[11px] text-gold" aria-hidden="true" />
           {t.contact.responseTime}

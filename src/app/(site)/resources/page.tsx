@@ -34,7 +34,7 @@ export default async function ResourcesPage() {
 
   return (
     <div className="page-enter">
-      <PageHeader title={t.resources.title} lead={t.resources.lead} />
+      <PageHeader title={t.resources.title} lead={t.resources.lead} / imageSrc="/images/editorial/workshop-2.jpg">
 
       {/* ── Guides wall ─────────────────────────────────────────── */}
       <section className="border-b border-line bg-pit">
