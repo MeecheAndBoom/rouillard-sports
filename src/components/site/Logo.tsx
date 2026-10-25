@@ -47,18 +47,12 @@ export function Logo({
 }) {
   const inner = (
     <span className={`flex items-center gap-2.5 ${className}`}>
-      <LogoMark size={size} />
-      {showWordmark ? (
-        <span className="flex flex-col leading-none">
-          <span className="font-display text-[17px] leading-none font-extrabold tracking-[0.02em] text-white">
-            Rouillard
-            <span className="text-gold"> Sport</span>
-          </span>
-          <span className="mt-1 font-mono-num text-[7.5px] leading-none tracking-[0.34em] text-muted">
-            BMW & RALLYE
-          </span>
-        </span>
-      ) : null}
+      <img
+        src="/full-logo.png"
+        alt={label || "Rouillard Sport"}
+        className="h-8 w-auto sm:h-9"
+        loading="lazy"
+      />
     </span>
   );
 

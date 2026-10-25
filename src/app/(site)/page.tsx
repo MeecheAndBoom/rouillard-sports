@@ -413,7 +413,7 @@ export default async function HomePage() {
               <h2 className="max-w-[640px] font-display text-[28px] leading-[0.98] text-white sm:text-[44px]">
                 {t.home.ctaTitle}
               </h2>
-              <p className="mt-5 max-w-[58ch] text-[16.5px] leading-[1.7] text-muted">
+              <p className="mt-5 max-w-[58ch] text-[16.5px] leading-[1.7] text-white/90">
                 {t.home.ctaLead}
               </p>
               <div className="mt-9 flex flex-wrap gap-3">

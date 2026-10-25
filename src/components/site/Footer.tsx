@@ -97,12 +97,14 @@ export function Footer() {
 
         <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.3fr_repeat(3,1fr)]">
           <div>
-            <div className="flex items-center gap-3">
-              <LogoMark size={40} />
-              <span className="font-display text-[20px] leading-none font-extrabold tracking-[0.02em] text-white">
-                Rouillard<span className="text-gold"> Sport</span>
-              </span>
-            </div>
+    <span className="flex items-center gap-3">
+      <img
+        src="/full-logo.png"
+        alt={t.meta.siteName}
+        className="h-9 w-auto sm:h-10"
+        loading="lazy"
+      />
+    </span>
             <p className="mt-5 max-w-[300px] text-[14px] leading-[1.7] text-muted">
               {t.footer.tagline}
             </p>

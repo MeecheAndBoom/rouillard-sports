@@ -44,7 +44,7 @@ export default async function ResourcesPage() {
               <h2 className="font-display text-[28px] leading-none text-white sm:text-[38px]">
                 {t.resources.guidesTitle}
               </h2>
-              <p className="mt-4 max-w-[62ch] text-[16.5px] leading-[1.7] text-muted">
+              <p className="mt-4 max-w-[62ch] text-[16.5px] leading-[1.7] text-white/90">
                 {t.resources.guidesHubLead}
               </p>
             </div>
@@ -95,7 +95,7 @@ export default async function ResourcesPage() {
             <h2 className="font-display text-[28px] leading-none text-white sm:text-[38px]">
               {t.resources.toolsTitle}
             </h2>
-            <p className="mt-4 max-w-[62ch] text-[16.5px] leading-[1.7] text-muted">
+            <p className="mt-4 max-w-[62ch] text-[16.5px] leading-[1.7] text-white/90">
               {t.resources.toolsHubLead}
             </p>
           </Reveal>

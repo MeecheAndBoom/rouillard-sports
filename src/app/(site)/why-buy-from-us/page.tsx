@@ -88,7 +88,7 @@ export default async function WhyBuyPage() {
             <h2 className="font-display text-[28px] leading-none text-white sm:text-[40px]">
               {t.whyBuy.ctaTitle}
             </h2>
-            <p className="mt-5 max-w-[54ch] text-[16.5px] leading-[1.7] text-muted">
+            <p className="mt-5 max-w-[54ch] text-[16.5px] leading-[1.7] text-white/90">
               {t.whyBuy.ctaLead}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
