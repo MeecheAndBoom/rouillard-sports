@@ -20,5 +20,10 @@ export default function imageLoader({ src, width, quality }) {
     return `https://res.cloudinary.com/${cloud}/image/upload/f_auto,q_${q},c_limit,w_${width}/${rest}`;
   }
 
+  // Local product images from public/
+  if (src.startsWith("/products/")) {
+    return src;
+  }
+
   return src;
 }
