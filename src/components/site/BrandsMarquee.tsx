@@ -34,10 +34,8 @@ export function BrandsMarquee() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={brand.image}
-              alt=""
-              aria-hidden="true"
-              className="h-6 max-h-6 w-auto object-contain opacity-45 transition-opacity duration-300 hover:opacity-90 sm:h-7 sm:max-h-7"
-              style={{ filter: "grayscale(1) brightness(0) invert(1)" }}
+              alt={brand.name}
+              className="h-6 max-h-6 w-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100 sm:h-7 sm:max-h-7"
               loading="lazy"
             />
           </div>
